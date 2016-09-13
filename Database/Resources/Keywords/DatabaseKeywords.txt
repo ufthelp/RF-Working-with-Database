@@ -1,0 +1,22 @@
+*** Settings ***
+Resource          ../Lib/GlobalLibrary.txt
+Resource          ../Variables/DatabaseVariables.txt
+
+*** Keywords ***
+Database Connection
+    [Documentation]    Establish connection to database
+    ${status}    ${msg}    Run Keyword And Ignore Error    Connect To Database    pymssql    ${dbName}    ${dbUsername}
+    ...    ${dbPassword}    ${dbHost}    ${dbport}
+    Run Keyword If    "${status}"=="FAIL"    Fail    Problem in database connectivity.Error message is ${msg}.
+
+Execute Query
+    [Arguments]    ${queryString}
+    [Documentation]    Execute SQL query
+    log    ${queryString}
+    ${status}    ${result}    Run Keyword And Ignore Error    Execute Sql String    ${queryString}
+
+Create Insert Query
+    [Arguments]    ${VAL1}    ${VAL2}    ${VAL3}    # Values to be inserted into table#${VAL3} - IS STRING value so used '' in insert
+    [Documentation]    Creating Insert Query
+    ${query}    Set Variable    INSERT INTO tbl_Name VALUES (${VAL1},${VAL2},'${VAL3}' );
+    [Return]    ${query}

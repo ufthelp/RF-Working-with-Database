@@ -1,0 +1,15 @@
+*** Settings ***
+Suite Setup       Create Result File
+Suite Teardown
+Test Setup
+Resource          ../Resources/Lib/GlobalLibrary.txt
+
+*** Variables ***
+
+*** Test Cases ***
+TC_001
+    [Documentation]    Insert Data into SQL table
+    Database Connection
+    ${query}    Create Insert Query    12345    67890    uftHelp
+    Execute Query    ${query}
+    Disconnect From Database

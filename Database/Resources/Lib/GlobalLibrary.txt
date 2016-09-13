@@ -1,0 +1,7 @@
+*** Settings ***
+Library           Selenium2Library
+Library           DatabaseLibrary
+Resource          ../Variables/GlobalVariables.txt    # Global variables
+Library           DatabaseLibrary
+Resource          ../Keywords/DatabaseKeywords.txt    # Database lib
+Resource          ../Variables/GlobalVariables.txt

@@ -1,0 +1,6 @@
+*** Variables ***
+${dbName}         DB_NAME
+${dbUsername}     testLogin
+${dbPassword}     test123
+${dbHost}         YKE0-23RRR\\TEST
+${dbport}         1433
